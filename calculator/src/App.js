@@ -9,15 +9,31 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      value: "Screen placeholder"
+      value: "Screen placeholder",
+      action: null
     };
   }
 
-
   buttonOnClick = e => {
-    this.setState({
-      value: e.target.value
-    });
+    const numRegex = /\d/;
+    const checkNumber = numRegex.test(e.target.value);//true for numbers
+    
+    let newValue;
+    if(checkNumber) {
+      if (!this.state.action) {
+        newValue = e.target.value;
+      }
+      else {
+        newValue = String(this.state.value) + this.state.action + String(e.target.value);
+      }
+      this.setState({
+        value: eval(newValue)
+      });
+    } else {
+      this.setState({
+        action: e.target.value
+      });
+    }
   }
   
   render() {
