@@ -6,3 +6,7 @@
   border-style: solid;
   border-width: thin;
 }
+
+button {
+  width: 100%;
+}

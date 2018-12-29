@@ -50,16 +50,17 @@ export default class App extends Component {
   render() {
     return (
         <Container className="App">
-          <Row>
-            <Col xs="4">
+              <Row style={{height:30}}/>
               <Row>
+                <Col md={{ size: 4, offset: 4 }}>
                   <Calculator_Screen id="display" value={this.state.screenValue}/>
+                </Col>
               </Row>
               <Row>
+                <Col md={{ size: 4, offset: 4 }}>
                   <Calculator_Body onClick={this.buttonOnClick}/>
+                </Col>
               </Row>
-            </Col>
-          </Row>
         </Container>
     );
   }
