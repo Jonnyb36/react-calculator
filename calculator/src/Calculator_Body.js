@@ -8,22 +8,22 @@ export const Calculator_Body = props => {
             <Row>
                 <Col xs="9">
                     <Col>
-                        <Calculator_Button value="1" onClick={props.onClick} />
-                        <Calculator_Button value="2" onClick={props.onClick} />
-                        <Calculator_Button value="3" onClick={props.onClick} />
+                        <Calculator_Button id="one" value="1" onClick={props.onClick} />
+                        <Calculator_Button id="two" value="2" onClick={props.onClick} />
+                        <Calculator_Button id="three" value="3" onClick={props.onClick} />
                     </Col>
                     <Col>
-                        <Calculator_Button value="4" onClick={props.onClick} />
-                        <Calculator_Button value="5" onClick={props.onClick} />
-                        <Calculator_Button value="6" onClick={props.onClick} />
+                        <Calculator_Button id="four" value="4" onClick={props.onClick} />
+                        <Calculator_Button id="five" value="5" onClick={props.onClick} />
+                        <Calculator_Button id="six" value="6" onClick={props.onClick} />
                     </Col>
                     <Col>
-                        <Calculator_Button value="7" onClick={props.onClick} />
-                        <Calculator_Button value="8" onClick={props.onClick} />
-                        <Calculator_Button value="9" onClick={props.onClick} />
+                        <Calculator_Button id="seven" value="7" onClick={props.onClick} />
+                        <Calculator_Button id="eight" value="8" onClick={props.onClick} />
+                        <Calculator_Button id="nine" value="9" onClick={props.onClick} />
                     </Col>
                     <Col>
-                        <Calculator_Button value="0" onClick={props.onClick} />
+                        <Calculator_Button id="zero" value="0" onClick={props.onClick} />
                     </Col>
                 </Col>
                 <Col xs="3">
@@ -31,6 +31,7 @@ export const Calculator_Body = props => {
                         <Calculator_Button value="*" onClick={props.onClick} />
                         <Calculator_Button value="+" onClick={props.onClick} />
                         <Calculator_Button value="/" onClick={props.onClick} />
+                        <Calculator_Button value="=" onClick={props.onClick} />
                     </Col>
                 </Col>
             </Row> 

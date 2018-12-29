@@ -9,7 +9,8 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      value: "Screen placeholder",
+      screenValue: 0,
+      calcValue: null,
       action: null
     };
   }
@@ -24,10 +25,19 @@ export default class App extends Component {
         newValue = e.target.value;
       }
       else {
-        newValue = String(this.state.value) + this.state.action + String(e.target.value);
+        newValue = String(this.state.screenValue) + this.state.action + String(e.target.value);
       }
       this.setState({
-        value: eval(newValue)
+        screenValue: e.target.value,
+        calcValue: eval(newValue)
+      });
+    } else if (e.target.value === "=") {
+      this.setState({
+        screenValue: this.state.calcValue
+      });
+    } else if (e.target.value === "ce") {
+      this.setState({
+        screenValue: this.state.calcValue
       });
     } else {
       this.setState({
@@ -42,7 +52,7 @@ export default class App extends Component {
           <Row>
             <Col xs="4">
               <Row>
-                  <Calculator_Screen value={this.state.value}/>
+                  <Calculator_Screen value={this.state.screenValue}/>
               </Row>
               <Row>
                   <Calculator_Body onClick={this.buttonOnClick}/>
