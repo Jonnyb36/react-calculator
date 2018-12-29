@@ -37,7 +37,8 @@ export default class App extends Component {
       });
     } else if (e.target.value === "ce") {
       this.setState({
-        screenValue: this.state.calcValue
+        screenValue: 0,
+        action: null
       });
     } else {
       this.setState({
@@ -52,7 +53,7 @@ export default class App extends Component {
           <Row>
             <Col xs="4">
               <Row>
-                  <Calculator_Screen value={this.state.screenValue}/>
+                  <Calculator_Screen id="display" value={this.state.screenValue}/>
               </Row>
               <Row>
                   <Calculator_Body onClick={this.buttonOnClick}/>

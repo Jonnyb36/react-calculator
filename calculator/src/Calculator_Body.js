@@ -24,14 +24,17 @@ export const Calculator_Body = props => {
                     </Col>
                     <Col>
                         <Calculator_Button id="zero" value="0" onClick={props.onClick} />
+                        <Calculator_Button id="decimal" value="." onClick={props.onClick} />
                     </Col>
                 </Col>
                 <Col xs="3">
                     <Col>
-                        <Calculator_Button value="*" onClick={props.onClick} />
-                        <Calculator_Button value="+" onClick={props.onClick} />
-                        <Calculator_Button value="/" onClick={props.onClick} />
-                        <Calculator_Button value="=" onClick={props.onClick} />
+                        <Calculator_Button id="add" value="+" onClick={props.onClick} />
+                        <Calculator_Button id="subtract" value="-" onClick={props.onClick} />
+                        <Calculator_Button id="multiply" value="*" onClick={props.onClick} />
+                        <Calculator_Button id="divide" value="/" onClick={props.onClick} />
+                        <Calculator_Button id="equals" value="=" onClick={props.onClick} />
+                        <Calculator_Button id="clear" value="ce" onClick={props.onClick} />
                     </Col>
                 </Col>
             </Row> 
