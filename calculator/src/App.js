@@ -10,39 +10,58 @@ export default class App extends Component {
     super(props);
     this.state = {
       screenValue: 0,
-      calcValue: null,
-      action: null
+      calcString: "",
+      action: null,
+      numberSelectedLast: false
     };
   }
 
   buttonOnClick = e => {
-    const numRegex = /\d/;
-    const checkNumber = numRegex.test(e.target.value);//true for numbers
+    const numRegex = /\d|\./;
+    const numberSelected = numRegex.test(e.target.value);//true for numbers
     
-    let newValue;
-    if(checkNumber) {
-      if (!this.state.action) {
+    let newValue, calcString;
+    if(numberSelected) {
+      if (!this.state.numberSelectedLast){
         newValue = e.target.value;
-      }
-      else {
-        newValue = String(this.state.screenValue) + this.state.action + String(e.target.value);
+        if(this.state.action){
+          calcString = this.state.calcString + this.state.action;
+          this.setState({
+            calcString: calcString
+          });
+        }  
+      } else {
+        newValue = String(this.state.screenValue) + String(e.target.value);
       }
       this.setState({
-        screenValue: e.target.value,
-        calcValue: eval(newValue)
+        numberSelectedLast: true,
+        screenValue: newValue
       });
+
     } else if (e.target.value === "=") {
+      const calcValue = eval(this.state.calcString + this.state.screenValue);
       this.setState({
-        screenValue: this.state.calcValue
-      });
-    } else if (e.target.value === "ce") {
-      this.setState({
-        screenValue: 0,
+        numberSelectedLast: false,
+        screenValue: calcValue,
+        calcString: String(calcValue),
         action: null
       });
-    } else {
+
+    } else if (e.target.value === "ce") {
       this.setState({
-        action: e.target.value
+        numberSelectedLast: false,
+        screenValue: 0,
+        calcString: "",
+        action: null
+      });
+      
+    } else {
+      const newValue = this.state.numberSelectedLast? eval(this.state.calcString + String(this.state.screenValue)): this.state.calcString
+      this.setState({
+        numberSelectedLast: false,
+        action: e.target.value,
+        screenValue: newValue,
+        calcString: newValue
       });
     }
   }
