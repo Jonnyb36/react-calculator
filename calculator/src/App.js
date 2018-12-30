@@ -5,6 +5,8 @@ import './App.css';
 import {Calculator_Screen} from './Calculator_Screen';
 import {Calculator_Body} from './Calculator_Body';
 
+const dps = 8;
+
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -18,7 +20,7 @@ export default class App extends Component {
 
   buttonOnClick = e => {
     const numRegex = /\d|\./;
-    let numberSelected = numRegex.test(e.target.value);//true for numbers
+    let numberSelected = numRegex.test(e.target.value);//true for numbers and "."
     if(/\./.test(this.state.screenValue) & e.target.value === "."){numberSelected = false} //override number selected if . already selected
 
     let newValue, calcString;
@@ -40,7 +42,7 @@ export default class App extends Component {
       });
 
     } else if (e.target.value === "=") {
-      const calcValue = eval(this.state.calcString + this.state.screenValue);
+      const calcValue = parseFloat(eval(this.state.calcString + this.state.screenValue).toFixed(dps));
       this.setState({
         numberSelectedLast: false,
         screenValue: calcValue,
@@ -57,7 +59,8 @@ export default class App extends Component {
       });
       
     } else {
-      const newValue = this.state.numberSelectedLast? eval(this.state.calcString + String(this.state.screenValue)): this.state.calcString
+      const numberSelectedLast = this.state.numberSelectedLast;
+      newValue = numberSelectedLast? parseFloat(eval(this.state.calcString + String(this.state.screenValue)).toFixed(dps)): this.state.screenValue;
       this.setState({
         numberSelectedLast: false,
         action: e.target.value,
