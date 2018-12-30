@@ -18,12 +18,13 @@ export default class App extends Component {
 
   buttonOnClick = e => {
     const numRegex = /\d|\./;
-    const numberSelected = numRegex.test(e.target.value);//true for numbers
-    
+    let numberSelected = numRegex.test(e.target.value);//true for numbers
+    if(/\./.test(this.state.screenValue) & e.target.value === "."){numberSelected = false} //override number selected if . already selected
+
     let newValue, calcString;
     if(numberSelected) {
       if (!this.state.numberSelectedLast){
-        newValue = e.target.value;
+        newValue = (e.target.value === ".") ? "0." : e.target.value; //deal with selecting . first
         if(this.state.action){
           calcString = this.state.calcString + this.state.action;
           this.setState({
