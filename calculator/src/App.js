@@ -48,7 +48,7 @@ export default class App extends Component {
         action: null
       });
 
-    } else if (e.target.value === "ce") {
+    } else if (e.target.id === "clear") {
       this.setState({
         numberSelectedLast: false,
         screenValue: 0,

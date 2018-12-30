@@ -48,16 +48,16 @@ export const Calculator_Body = props => {
                             <Calculator_Button id="decimal" value="." onClick={props.onClick} />
                         </Col>
                         <Col xs="4">
-                            <Calculator_Button id="equals" value="=" onClick={props.onClick} />
+                            <Calculator_Button id="equals" value="=" onClick={props.onClick} style={{backgroundColor:"dodgerblue"}} />
                         </Col>
                     </Row>
                 </Col>
                 <Col sm="3">
-                    <Calculator_Button id="add" value="+" onClick={props.onClick} />
-                    <Calculator_Button id="subtract" value="-" onClick={props.onClick} />
-                    <Calculator_Button id="multiply" value="*" onClick={props.onClick} />
-                    <Calculator_Button id="divide" value="/" onClick={props.onClick} />
-                    <Calculator_Button id="clear" value="ce" onClick={props.onClick} />
+                    <Calculator_Button id="add" value="+" onClick={props.onClick} style={{backgroundColor:"lightgrey"}}/>
+                    <Calculator_Button id="subtract" value="-" onClick={props.onClick} style={{backgroundColor:"lightgrey"}} />
+                    <Calculator_Button id="multiply" value="*" onClick={props.onClick} style={{backgroundColor:"lightgrey"}} />
+                    <Calculator_Button id="divide" value="/" onClick={props.onClick} style={{backgroundColor:"lightgrey"}} />
+                    <Calculator_Button id="clear" value="AC" onClick={props.onClick} style={{backgroundColor:"red"}} />
                 </Col>
             </Row> 
         </>
